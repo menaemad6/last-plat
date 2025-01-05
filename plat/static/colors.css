@@ -1,0 +1,21 @@
+:root{
+    --pr-color10: #7a6ad8 ;
+    --sc-color10: #0effbe;
+    --default-bg: #f1f0fe;
+}
+
+
+
+.pr-color10-cl {
+    color: var(--pr-color10);
+}
+.pr-color10-bg {
+    background-color: var(--pr-color10);
+}
+
+.sc-color10-cl {
+    color: var(--sc-color10);
+}
+.sc-color10-bg {
+    background-color: var(--sc-color10);
+}
