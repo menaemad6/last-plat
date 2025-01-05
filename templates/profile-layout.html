@@ -1,0 +1,252 @@
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+
+<!DOCTYPE html>
+
+<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
+  data-template="vertical-menu-template-free">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+
+
+  <meta name="description" content="" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="{% static 't-letter.svg' %}" />
+<!-- Favicon -->
+
+
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icons. Uncomment required icon fonts -->
+  <link rel="stylesheet" href="{% static 'profile/assets/vendor/fonts/boxicons.css' %}" />
+
+
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="{% static 'profile/assets/vendor/css/core.css' %}" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="{% static 'profile/assets/vendor/css/theme-default.css' %}" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="{% static 'profile/assets/css/demo.css' %}" />
+
+  <!-- Custom Colors Css  -->
+  <link rel="stylesheet" href="{% static 'colors.css' %}" />
+  <!-- Custom Colors Css -->
+
+  
+  <!-- Bar Chart CSS  -->
+  <link rel="stylesheet" href="{% static 'profile/assets/css/bar-chart.css' %}" />
+
+  <!-- Vendors CSS -->
+  <link rel="stylesheet" href="{% static 'profile/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css' %}" />
+  <link rel="stylesheet" href="{% static 'profile/assets/vendor/libs/apex-charts/apex-charts.css' %}" />
+
+
+  <!-- Navbar Css  -->
+  <link rel="stylesheet" href="{% static 'profile/assets/css/navbar.css' %}" />
+
+  <!-- Main Css  -->
+  <link rel="stylesheet" href="{% static 'profile/assets/css/core.css' %}" />
+
+  <!-- Bar Chart CSS  -->
+  <link rel="stylesheet" href="{% static 'profile/assets/css/bar-chart.css' %}" />
+  <!-- Helpers -->
+  <script src="{% static 'profile/assets/vendor/js/helpers.js' %}"></script>
+
+  <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+  <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+  <script src="{% static 'profile/assets/js/config.js' %}"></script>
+
+
+
+
+  <!-- Aos Library  -->
+  <link href="{% static 'aos/dist/aos.css' %}" rel="stylesheet">
+<!-- Aos Library  -->
+
+
+
+
+  {% block head %}
+  {% endblock head %}
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+
+
+
+  <!-- Messages  -->
+  {% if messages %}
+  {% for message in messages %}
+
+  <div
+    class="bs-toast toast toast-placement-ex m-2 bottom-0 end-0 show {% if message.tags %} bg-{{message.tags}} {% endif %}"
+    role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <i class="bx bx-bell me-2"></i>
+      <div class="me-auto fw-semibold"></div>
+      <small>Just Now</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      {{message}}
+    </div>
+  </div>
+
+  {% endfor %}
+  {% endif %}
+  <!-- Messages  -->
+
+
+
+  
+
+  {% block content %}
+
+  {% endblock content %}
+
+
+
+
+
+
+
+  <!-- <div class="buy-now">
+    <a href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/" target="_blank"
+      class="btn btn-danger btn-buy-now">Upgrade to Pro</a>
+  </div> -->
+
+  <!-- Info JS -->
+  <script src="{% static 'profile/assets/js/info.js' %}"></script>
+
+
+
+
+
+  <!-- Core JS -->
+  <!-- build:js assets/vendor/js/core.js -->
+  <script src="{% static 'profile/assets/vendor/libs/jquery/jquery.js' %}"></script>
+  <script src="{% static 'profile/assets/vendor/libs/popper/popper.js' %}"></script>
+  <script src="{% static 'profile/assets/vendor/js/bootstrap.js' %}"></script>
+  <script src="{% static 'profile/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+
+  <script src="{% static 'profile/assets/vendor/js/menu.js' %}"></script>
+  <!-- endbuild -->
+
+  <!-- Vendors JS -->
+  <script src="{% static 'profile/assets/vendor/libs/apex-charts/apexcharts.js' %}"></script>
+
+  <!-- Main JS -->
+  <script src="{% static 'profile/assets/js/main.js' %}"></script>
+
+  <!-- Navbar JS -->
+  <script src="{% static 'profile/assets/js/navbar.js' %}"></script>
+
+  <!-- Page JS -->
+  <script src="{% static 'profile/assets/js/dashboards-analytics.js' %}"></script>
+
+
+
+  <!-- Form Counter Js  -->
+  <script src="{% static 'profile/assets/js/form.js' %}"></script>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  <!-- Preloader JS  -->
+  <script src="{% static 'profile/assets/js/preloader.js' %}"></script>
+
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/1454af8120.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome Icons -->
+
+
+  <!-- Aos Library  -->
+  <script src="{% static 'aos/dist/aos.js' %}"></script>
+
+  <script>
+    AOS.init();
+  </script>
+<!-- Aos Library  -->
+
+
+
+
+
+<script>
+  const newPrimaryColor = '#0e6ebe';
+  const newPrimaryColorHover = '#0f92ff';
+  const newPrimaryColorShadow = '#0b4575';
+
+  const newSecondaryColor = '#0effbe';
+
+  const NewDefaultBG = '#f0f8fe';
+
+  document.documentElement.style.setProperty('--primary', newPrimaryColor);
+  document.documentElement.style.setProperty('--primary-color', newPrimaryColor);
+  document.documentElement.style.setProperty('--pr-color', newPrimaryColor);
+  document.documentElement.style.setProperty('--pr-color1', newPrimaryColor);
+  document.documentElement.style.setProperty('--pr-color2', newPrimaryColor);
+  document.documentElement.style.setProperty('--pr-color3', newPrimaryColor);
+  document.documentElement.style.setProperty('--pr-color4', newPrimaryColor);
+  document.documentElement.style.setProperty('--pr-color5', newPrimaryColor);
+  document.documentElement.style.setProperty('--pr-color6', newPrimaryColor);
+  document.documentElement.style.setProperty('--pr-color7', newPrimaryColor);
+  document.documentElement.style.setProperty('--pr-color10', newPrimaryColor);
+
+  document.documentElement.style.setProperty('--bs-primary', newPrimaryColor);
+  document.documentElement.style.setProperty('--bs-primary-hover', newPrimaryColorHover);
+  document.documentElement.style.setProperty('--bs-primary-shadow', newPrimaryColorShadow);
+
+  document.documentElement.style.setProperty('--sc-color', newSecondaryColor);
+  document.documentElement.style.setProperty('--sc-color1', newSecondaryColor);
+  document.documentElement.style.setProperty('--sc-color2', newSecondaryColor);
+  document.documentElement.style.setProperty('--sc-color3', newSecondaryColor);
+  document.documentElement.style.setProperty('--sc-color10', newSecondaryColor);
+
+  document.documentElement.style.setProperty('--default-bg', NewDefaultBG);
+  document.documentElement.style.setProperty('--default-bg1', NewDefaultBG);
+  document.documentElement.style.setProperty('--default-bg2', NewDefaultBG);
+
+  config.colors.primary = newPrimaryColor;
+
+</script>
+
+
+
+</body>
+
+</html>

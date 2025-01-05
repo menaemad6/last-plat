@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+
+
+
+    <!-- Plyr CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+    <style>
+        /* Hide YouTube logo and prevent right-click on the iframe */
+        .plyr__video-embed iframe {
+            pointer-events: none;
+            /* Prevent right-click and interactions */
+        }
+
+
+        :root {
+            --plyr-color-main: #796ad8;
+        }
+    </style>
+    <!-- Plyr CSS -->
+
+
+
+</head>
+
+<body>
+
+
+    <!-- Video Player -->
+
+    <div style="display: flex; justify-content: center; align-items: center;">
+
+        <div class="plyr__video-embed" id="player" >
+            <iframe
+                src="https://youtu.be/b_EGEerEqvA?si=ISwUHhXw_q5hIgvO&iv_load_policy=3&modestbranding=0&rel=0&showinfo=0&controls=0&disablekb=1&fs=0&playsinline=1"
+                allowfullscreen allow="autoplay; encrypted-media" frameborder="0"></iframe>
+        </div>
+
+    </div>
+
+    <!-- Plyr JS -->
+    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+
+    <script>
+        // Initialize the Plyr player with quality and speed options
+        const player = new Plyr('#player', {
+            controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'settings',
+                'fullscreen'
+            ], // Add settings control for quality and speed
+            settings: ['speed', 'quality'], // Enable speed and quality settings
+            speed: {
+                selected: 1, // Default speed
+                options: [0.5, 0.75, 1, 1.25, 1.5, 2] // Speed options
+            },
+            youtube: {
+                noCookie: true, // Use YouTube's privacy-enhanced mode
+                rel: 0, // Disable related videos
+                modestbranding: 0, // Minimal branding
+                iv_load_policy: 3, // Disable annotations
+                showinfo: 0, // Hide video title and info
+                fs: 0, // Disable fullscreen button in YouTube's player
+                playsinline: 1 // Force inline playback on mobile
+            }
+        });
+
+
+
+
+        // Dynamically handle quality change (requires YouTube API to set quality, but Plyr provides a UI)
+        player.on('qualitychange', event => {
+            console.log(`Quality changed to: ${event.detail.quality}`);
+        });
+    </script>
+=
+    <!-- Plyr JS -->
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,661 @@
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'main/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="{% static 't-letter.svg' %}" />
+<!-- Favicon -->
+
+  <!-- Page Title  -->
+  <title>{{platform.website_title}} - Login</title>
+  <!-- Page Title  -->
+
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="{% static 'main/assets/css/fontawesome.css' %}">
+  <link rel="stylesheet" href="{% static 'main/assets/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'main/assets/css/owl.css' %}">
+  <link rel="stylesheet" href="{% static 'main/assets/css/animate.css' %}">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+  <!-- Additional CSS Files -->
+
+  <!-- Aos Library  -->
+  <link href="{% static 'aos/dist/aos.css' %}" rel="stylesheet">
+  <!-- Aos Library  -->
+
+
+
+
+
+
+  <style>
+    .gradient-background {
+      background: linear-gradient(309deg, var(--primary), #fff);
+      background-size: 300% 300%;
+      animation: gradient-animation 5s ease infinite;
+    }
+
+    @keyframes gradient-animation {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+
+    .login {
+      display: flex;
+      justify-content: center;
+    }
+
+    .form-container {
+      width: 320px;
+      border-radius: 0.75rem;
+      background-color: rgba(17, 24, 39, 1);
+      padding: 2rem;
+      color: rgba(243, 244, 246, 1);
+    }
+
+    .title {
+      color: white;
+      text-align: center;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      font-weight: 700;
+    }
+
+    .form {
+      margin-top: 1.5rem;
+    }
+
+    .input-group {
+      margin-top: 0.25rem;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+
+    .input-group label {
+      display: block;
+      color: rgba(156, 163, 175, 1);
+      margin-bottom: 4px;
+    }
+
+    .input-group input {
+      width: 100%;
+      border-radius: 0.375rem;
+      border: 1px solid rgba(55, 65, 81, 1);
+      outline: 0;
+      background-color: rgba(17, 24, 39, 1);
+      padding: 0.75rem 1rem;
+      color: rgba(243, 244, 246, 1);
+    }
+
+    .input-group input:focus {
+      border-color: var(--primary);
+    }
+
+    .forgot {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      color: rgba(156, 163, 175, 1);
+      margin: 8px 0 14px 0;
+    }
+
+    .forgot a,
+    .signup a {
+      color: rgba(243, 244, 246, 1);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .forgot a:hover,
+    .signup a:hover {
+      text-decoration: underline var(--primary);
+    }
+
+    .sign {
+      display: block;
+      width: 100%;
+      background-color: var(--primary);
+      padding: 0.75rem;
+      text-align: center;
+      color: rgba(17, 24, 39, 1);
+      border: none;
+      border-radius: 0.375rem;
+      font-weight: 600;
+    }
+
+    .social-message {
+      display: flex;
+      align-items: center;
+      padding-top: 1rem;
+    }
+
+    .line {
+      height: 1px;
+      flex: 1 1 0%;
+      background-color: rgba(55, 65, 81, 1);
+    }
+
+    .social-message .message {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      color: rgba(156, 163, 175, 1);
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+    }
+
+    .social-icons .icon {
+      border-radius: 0.125rem;
+      padding: 0.75rem;
+      border: none;
+      background-color: transparent;
+      margin-left: 8px;
+    }
+
+    .social-icons .icon svg {
+      height: 1.25rem;
+      width: 1.25rem;
+      fill: #fff;
+    }
+
+    .signup {
+      text-align: center;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      color: rgba(156, 163, 175, 1);
+    }
+
+
+
+
+    /* Animated Background  */
+  </style>
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+
+
+
+
+
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <a href="{% url 'home' %}" class="logo" style="white-space: nowrap; overflow: hidden;">
+              {% if platform.text_logo %}
+              <h1>{{ platform.text_logo }}</h1>
+              {% else %}
+              <h1>
+                {% if LANGUAGE_CODE == 'ar' %}
+                اسم المعلم
+                {% else %}
+                Teacher Name
+                {% endif %}
+              </h1>
+              {% endif %}
+            </a>
+
+            <ul class="nav">
+              <li class="scroll-to-section">
+                <a href="/">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  الرئيسية
+                  {% else %}
+                  Home
+                  {% endif %}
+                </a>
+              </li>
+              <li class="scroll-to-section">
+                <a href="{% url 'grades' %}">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  المحاضرات
+                  {% else %}
+                  Lectures
+                  {% endif %}
+                </a>
+              </li>
+
+              {% if user_profile %}
+              {% if user_profile.instructor == True %}
+              <li class="scroll-to-section">
+                <a href="{% url 'dashboard-page' %}">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  لوحة التحكم
+                  {% else %}
+                  Dashboard
+                  {% endif %}
+                </a>
+              </li>
+              <li class="scroll-to-section">
+                <a href="{% url 'dashboard-codes' %}">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  الأكواد
+                  {% else %}
+                  Codes
+                  {% endif %}
+                </a>
+              </li>
+              {% else %}
+              <li class="scroll-to-section">
+                <a href="{% url 'main' user %}">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  الملف الشخصي
+                  {% else %}
+                  Profile
+                  {% endif %}
+                </a>
+              </li>
+              <li class="scroll-to-section">
+                <a href="{% url 'notifications' user %}">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  الإشعارات
+                  {% else %}
+                  Notifications
+                  {% endif %}
+                </a>
+              </li>
+              {% endif %}
+              <li class="scroll-to-section">
+                <a href="{% url 'logout' %}">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  تسجيل الخروج
+                  {% else %}
+                  Logout
+                  {% endif %}
+                </a>
+              </li>
+              {% else %}
+              <li class="scroll-to-section">
+                <a href="{% url 'signup' %}">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  حساب جديد
+                  {% else %}
+                  Register
+                  {% endif %}
+                </a>
+              </li>
+              <li class="scroll-to-section">
+                <a href="{% url 'login' %}" class="active">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  تسجيل الدخول
+                  {% else %}
+                  Login
+                  {% endif %}
+                </a>
+              </li>
+              {% endif %}
+
+              <li class="scroll-to-section">
+                <a>
+                  <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}">
+
+
+
+                    {% if LANGUAGE_CODE == 'ar' %}
+                    <button type='submit' name='language' value='en'
+                      style="background-color: transparent; border: none; padding: 0; margin: 0;">
+                      <div style="position: relative;" class="nav-link" data-toggle="tooltip" data-placement="down"
+                        title="تحويل اللغة الى الانجليزية">
+                        <i class="fa fa-2x fa-globe text-dark" style="font-size: 34px;"></i>
+                        <span class="button__badge pr-bg"
+                          style="border-radius: 50%;color: black;display: flex;justify-content: center; align-items: center; width: 25px; height: 25px; font-size: 10px; position: absolute; top: 0; right: 0;">EN</span>
+                      </div>
+                    </button>
+                    {% else %}
+                    <button type='submit' name='language' value='ar'
+                      style="background-color: transparent; border: none; padding: 0; margin: 0;">
+                      <div style="position: relative;" class="nav-link" data-toggle="tooltip" data-placement="down"
+                        title="Change Language To English">
+                        <i class="fa fa-2x fa-globe text-dark" style="font-size: 34px;"></i>
+                        <span class="button__badge pr-bg"
+                          style="border-radius: 50%;color: black;display: flex;justify-content: center; align-items: center; width: 25px; height: 25px; font-size: 10px; position: absolute; top: 0; right: 0;">AR</span>
+                      </div>
+                    </button>
+                    {% endif %}
+
+
+
+                  </form>
+                </a>
+
+              </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </ul>
+
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+
+
+
+
+
+
+
+
+  <div class="main-banner" id="top" data-aos="fade-right" data-aos-delay="200" data-aos-duration="600">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-6 col-12 login mt-3" data-aos="zoom-in-up" data-aos-delay="200" data-aos-duration="600">
+          <div class="form-container">
+            <p class="title">
+              {% if LANGUAGE_CODE == 'ar' %}
+              تسجيل الدخول
+              {% else %}
+              Login
+              {% endif %}
+            </p>
+            <form class="form" method="post">
+              {% csrf_token %}
+
+              <input type="text" id="device-type" name="device-type" value="" hidden>
+              <input type="text" id="browser-type" name="browser-type" value="" hidden>
+              <input type="text" id="login-date" name="login-date" value="" hidden>
+
+              <div class="input-group">
+                <label for="username">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  رقم الهاتف أو اسم المستخدم
+                  {% else %}
+                  Phone Number or Username
+                  {% endif %}
+                </label>
+                <input type="text" name="username" id="username" placeholder="">
+                <p id="error-message" style="color: red; display: none;">Spaces are not allowed!</p>
+              </div>
+              <div class="input-group">
+                <label for="password">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  كلمة المرور
+                  {% else %}
+                  Password
+                  {% endif %}
+                </label>
+                <input type="password" name="password" id="password" placeholder="">
+              </div>
+
+              {% if messages %}
+              {% for message in messages %}
+              <div class="errors mt-4">
+                {{message}}
+              </div>
+              {% endfor %}
+              {% endif %}
+
+              <button class="sign mt-4">
+                {% if LANGUAGE_CODE == 'ar' %}
+                تسجيل الدخول
+                {% else %}
+                Login
+                {% endif %}
+              </button>
+            </form>
+
+            <p class="signup mt-4">
+              {% if LANGUAGE_CODE == 'ar' %}
+              ليس لديك حساب؟
+              {% else %}
+              Don't have an account?
+              {% endif %}
+              <a rel="noopener noreferrer" href="{% url 'signup' %}" class="ms-1">
+                {% if LANGUAGE_CODE == 'ar' %}
+                اشترك
+                {% else %}
+                Sign up
+                {% endif %}
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-12 d-none d-md-block login">
+          <div class="illu" style="width: 100%; height: 500px; border-radius: 15px;">
+            <img src="{% static 'main/assets/images/app/login-animate.svg' %}" style="width: 100%; height: 100%;">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <footer>
+    <div class="container">
+
+      <div class="col-lg-12"
+        style="padding: 0; height: 80px; display: flex; justify-content: center; align-items: center;">
+        <p class="d-flex justify-content-center align-items-center" style="line-height: normal;">
+          {% if platform.facebook %}
+          <span class="me-3">
+            <a href="{{platform.facebook}}" style="background: none; border: none;">
+              <i class="bx bxl-facebook-circle text-white" style="font-size: 40px;"></i>
+            </a>
+          </span>
+          {% endif %}
+
+          {% if platform.whatsapp %}
+          <span class="me-3">
+            <a href="https://wa.me/2{{platform.whatsapp}}" style="background: none; border: none;">
+              <i class="bx bxl-whatsapp text-white" style="font-size: 45px;"></i>
+            </a>
+          </span>
+          {% endif %}
+
+          {% if platform.instagram %}
+          <span class="me-3">
+            <a href="{{platform.instagram}}" style="background: none; border: none;">
+              <i class="bx bxl-instagram-alt text-white" style="font-size: 45px;"></i>
+            </a>
+          </span>
+          {% endif %}
+
+          {% if platform.youtube %}
+          <span class="me-3">
+            <a href="{{platform.youtube}}" style="background: none; border: none;">
+              <i class="bx bxl-youtube text-white" style="font-size: 52px;"></i>
+            </a>
+          </span>
+          {% endif %}
+
+          {% if platform.telegram %}
+          <span class="me-3">
+            <a href="{{platform.telegram}}" style="background: none; border: none;">
+              <i class="bx bxl-telegram text-white" style="font-size: 45px;"></i>
+            </a>
+          </span>
+          {% endif %}
+
+          {% if platform.tiktok %}
+          <span class="me-3">
+            <a href="{{platform.tiktok}}" style="background: none; border: none;">
+              <i class="bx bxl-tiktok text-white" style="font-size: 40px;"></i>
+            </a>
+          </span>
+          {% endif %}
+
+          {% if platform.twitter %}
+          <span class="me-3">
+            <a href="{{platform.twitter}}" style="background: none; border: none;">
+              <i class="bx bxl-twitter text-white" style="font-size: 40px;"></i>
+            </a>
+          </span>
+          {% endif %}
+        </p>
+      </div>
+
+      <div class="col-lg-12"
+        style="padding: 0; height: 50px; display: flex; justify-content: center; align-items: center;">
+        <p style="padding: 0; margin: 0; line-height: normal;">
+
+          Copyright © 2024 Organization. All rights reserved.
+
+        </p>
+      </div>
+
+      <div class="col-lg-12"
+        style="padding: 0; display: flex; justify-content: center; align-items: center; line-height: normal;">
+        <p>
+
+          Developed By
+
+          <a style="font-weight: bold; font-size: 25px; color: white;" href="https://mina-emad.netlify.app">
+
+            Mina Emad
+
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+
+
+
+
+
+
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'main/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'main/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'main/assets/js/isotope.min.js' %}"></script>
+  <script src="{% static 'main/assets/js/owl-carousel.js' %}"></script>
+  <script src="{% static 'main/assets/js/counter.js' %}"></script>
+  <script src="{% static 'main/assets/js/custom.js' %}"></script>
+
+
+  <!-- Aos Library  -->
+  <script src="{% static 'aos/dist/aos.js' %}"></script>
+
+  <script>
+    AOS.init();
+  </script>
+  <!-- Aos Library  -->
+
+  <!-- No Spaces Allowed  -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.getElementById("username");
+      const errorMessage = document.getElementById("error-message");
+
+      input.addEventListener("input", (event) => {
+        if (event.target.value.includes(" ")) {
+          // Remove the space character
+          event.target.value = event.target.value.replace(/\s+/g, "");
+
+          // Show the error message
+          errorMessage.style.display = "block";
+        } else {
+          // Hide the error message if no spaces
+          errorMessage.style.display = "none";
+        }
+      });
+    });
+  </script>
+  <!-- No Spaces Allowed  -->
+
+  <script>
+    const newPrimaryColor = '#0e6ebe';
+    document.documentElement.style.setProperty('--primary', newPrimaryColor);
+    document.documentElement.style.setProperty('--primary-color', newPrimaryColor);
+    document.documentElement.style.setProperty('--pr-color', newPrimaryColor);
+    document.documentElement.style.setProperty('--pr-color1', newPrimaryColor);
+    document.documentElement.style.setProperty('--pr-color2', newPrimaryColor);
+    document.documentElement.style.setProperty('--pr-color3', newPrimaryColor);
+    document.documentElement.style.setProperty('--pr-color4', newPrimaryColor);
+    document.documentElement.style.setProperty('--pr-color5', newPrimaryColor);
+    document.documentElement.style.setProperty('--pr-color6', newPrimaryColor);
+    document.documentElement.style.setProperty('--pr-color10', newPrimaryColor);
+    document.documentElement.style.setProperty('--bs-primary', newPrimaryColor);
+    document.documentElement.style.setProperty('--bs-primary', newPrimaryColor);
+    config.colors.primary = newPrimaryColor;
+  </script>
+
+
+</body>
+
+</html>

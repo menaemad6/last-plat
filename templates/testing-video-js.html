@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom YouTube Video Player</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #333;
+            margin: 0;
+        }
+        #player {
+            width: 640px;
+            height: 360px;
+            position: relative;
+        }
+        .controls {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            color: white;
+        }
+        .button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .button:hover {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div id="player"></div>
+    <div class="controls">
+        <button class="button" id="play">Play</button>
+        <button class="button" id="pause">Pause</button>
+        <button class="button" id="stop">Stop</button>
+    </div>
+
+    <script>
+        // Load the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+
+        // This function creates an <iframe> (and YouTube player)
+        // after the API code downloads.
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '360',
+                width: '640',
+                videoId: 'pVozxID9zjc', // Replace with your YouTube video ID
+                playerVars: {
+                    'controls': 0, // Hide controls
+                    'disablekb': 1,
+                    'modestbranding': 1,
+                    'showinfo': 0,
+                    'rel': 0,
+                    'fs': 0,
+                    'iv_load_policy': 3,
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // Player is ready
+        }
+
+        // Button event listeners
+        document.getElementById('play').addEventListener('click', function() {
+            player.playVideo();
+        });
+
+        document.getElementById('pause').addEventListener('click', function() {
+            player.pauseVideo();
+        });
+
+        document.getElementById('stop').addEventListener('click', function() {
+            player.stopVideo();
+        });
+    </script>
+</body>
+</html>

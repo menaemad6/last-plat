@@ -1,0 +1,16 @@
+# Ignore the virtual environment folder
+env/
+
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore static files (those generated during Django's collectstatic command)
+static/
+
+# Ignore media files (uploaded by users)
+media/
+
+# Ignore other environment-specific files (such as Django secret keys, etc.)
+*.env
