@@ -7,7 +7,7 @@ env/
 __pycache__/
 
 # Ignore static files (those generated during Django's collectstatic command)
-static/
+/static/
 
 # Ignore media files (uploaded by users)
 media/
